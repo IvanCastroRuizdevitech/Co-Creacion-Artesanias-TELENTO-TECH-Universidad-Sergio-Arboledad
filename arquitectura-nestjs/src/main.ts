@@ -12,7 +12,14 @@ async function bootstrap() {
     app.setGlobalPrefix('api/');
     app.use(express.json({ limit: '100mb' }));
     app.use(express.urlencoded({ extended: true, limit: '100mb' }));
-    app.enableCors();
+    // Habilitar CORS de manera específica
+    app.enableCors({
+      origin: ['http://web-artesanias.s3-website-us-east-1.amazonaws.com'], // Permitir el origen específico
+      //origin: ['http://localhost:5173'], // Permitir el origen específico
+      methods: ['GET', 'POST', 'PATCH', 'DELETE'], // Métodos permitidos
+      allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
+      credentials: true, // Habilitar si necesitas enviar cookies o autenticación
+    });    
     console.log(`Puerto: ${process.env.PORT }`);
     await app.listen(process.env.PORT);
 

@@ -1,0 +1,134 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::NOMBRE_DEL_BUCKET/*"
+        }
+    ]
+}
+
+
+
+
+npm install -g @nestjs/cli
+
+nest new nombre-proyecto
+
+nest generate resource artesanias-productos
+
+yarn remove prettier eslint-plugin-prettier eslint-config-prettier
+
+yarn add @nestjs/config
+yarn add pg @types/pg 
+
+
+
+---  Compilado Backend  ----
+
+npm i pkg
+npm i webpack-cli copy-webpack-plugin ts-compile
+
+
+PORT = 3000
+POSTGRES_HOST=database-artesanias.caznc6fxbdjt.us-east-1.rds.amazonaws.com
+POSTGRES_PORT=5432
+POSTGRES_DB=postgres
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=12345678
+
+
+CREATE TABLE public.newtable (
+	id bigserial NOT NULL,
+	nombre text NULL
+);
+
+
+CREATE TABLE public.productos (
+	id bigserial NOT NULL,
+	description text NOT NULL,
+	title text NOT NULL,
+	url text NOT NULL
+);
+
+INSERT INTO public.productos
+(id, description, title, url)
+VALUES(1, 'Productos elaborados con la mas alta calidad...', 'Cesteria', 'https://imagenes-artesanias.s3.amazonaws.com/1.png'),
+	  (2, 'Productos elaborados con la mas alta calidad...', 'Metal', 'https://imagenes-artesanias.s3.amazonaws.com/1.png'),
+	  (3, 'Productos elaborados con la mas alta calidad...', 'Hilo', 'https://imagenes-artesanias.s3.amazonaws.com/1.png'),
+	  (4, 'Productos elaborados con la mas alta calidad...', 'Cerámica', 'https://imagenes-artesanias.s3.amazonaws.com/1.png'),
+	  (5, 'Productos elaborados con la mas alta calidad...', 'Lana', 'https://imagenes-artesanias.s3.amazonaws.com/1.png'),
+	  (6, 'Productos elaborados con la mas alta calidad...', 'Tela', 'https://imagenes-artesanias.s3.amazonaws.com/1.png');
+
+
+yarn add pkg  o npm i pkg
+yarn add ts-compile o npm i ts-compile
+yarn add webpack-cli o npm i webpack-cli
+yarn add copy-webpack-plugin o npm i copy-webpack-plugin
+
+
+
+---  Configurar la instancia EC2 --- 
+sudo apt update
+sudo apt upgrade
+
+-- Descargar node
+
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+-- Instalar node
+sudo apt install -y nodejs
+
+-- instalar pm2
+sudo npm install -g pm2
+
+
+
+
+
+
+
+Tarea 6: Agregar las imágenes de Docker a Amazon ECR 
+
+Reemplace <account-id> con el ID de cuenta que acaba de encontrar:
+
+aws ecr get-login-password \
+--region us-east-1 | docker login --username AWS \
+--password-stdin <account-id>.dkr.ecr.us-east-1.amazonaws.com
+
+
+{
+    "repository": {
+        "repositoryArn": "arn:aws:ecr:us-east-1:790646669249:repository/node-app",
+        "registryId": "790646669249",
+        "repositoryName": "node-app",
+        "repositoryUri": "790646669249.dkr.ecr.us-east-1.amazonaws.com/node-app",
+        "createdAt": "2024-08-29T04:22:37.516000+00:00",
+        "imageTagMutability": "MUTABLE",
+        "imageScanningConfiguration": {
+            "scanOnPush": false
+        },
+        "encryptionConfiguration": {
+            "encryptionType": "AES256"
+        }
+    }
+}
+
+
+docker tag node_app:latest <registry-id>.dkr.ecr.us-east-1.amazonaws.com/node-app:latest
+docker push <registry-id>.dkr.ecr.us-east-1.amazonaws.com/node-app:latest
+
+aws ecr list-images --repository-name node-app
+
+{
+    "imageIds": [
+        {
+            "imageDigest": "sha256:19f34e0dfec8447925262a5f1c68722eb705554eba1c00a3b76036067d369e3f",
+            "imageTag": "latest"
+        }
+    ]
+}
+
+
+
